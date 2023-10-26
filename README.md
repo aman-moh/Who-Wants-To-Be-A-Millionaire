@@ -1,6 +1,6 @@
 <h1>Who Wants To Be A Millionaire</h1>
 
-##Intent
+<h2>Intent</h2>
 *"Every journey begins with the first step of articulating the intention, and then becoming the intention.” - Bryant McGill, Voice of Reason*
 
 The intention of this project is to create something that touches all areas of my current skillset and improves on the areas where I could be better. In a broad sense, this project will focus on areas such as Infrastructure, Networking, AI and Azure. All such areas will include resources that I am either familiar or unfamiliar with.
@@ -14,7 +14,7 @@ The game would be GUI based written in python that would be picking out question
 The program should be able to use a LLM to create sets of questions and answers that would test the user. The notable thing about the program is that it will ask about any Wikipedia page that the user enters giving it's uniqueness with the ability to use AI.
 
 
-##Planned Architecture
+<h2>Planned Architecture</h2>
 
 The planned architecture will be sum of its parts:
 
@@ -28,8 +28,8 @@ Backend
 
 ![Architecture Diagram](./million_pics/WWTBAM%20Diagram.drawio.png)
 
-##Timelines for Completion
+<h2>Timelines for Completion</h2>
 
-##Problems & Resolutions
+<h2>Problems & Resolutions</h2>
 
-##Conclusions
+<h2>Conclusions</h2>
