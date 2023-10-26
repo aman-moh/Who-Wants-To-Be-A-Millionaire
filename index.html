@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    :root{
+        --coll: #391D6F;
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    .gamecontainer{
+        width: 100%;
+        height: 100vh;
+        background-color: var(--coll);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .left{
+        width: 70%;
+        height: 100%;
+        /* background-color: antiquewhite; */
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid white;
+        justify-content: center;
+    }
+
+    .right{
+        width: 30%;
+        height: 100%;  
+        display: flex;
+        flex-direction: column;
+    }
+
+    .question-container{
+        width: 100%;
+       /*  background-color: aliceblue; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .hr{
+        width: 50%;
+        height: 3px;
+        background-color: white;
+    }
+
+    .question-container p{
+        color: white;
+        font-size: 25px;
+        width: 100%;
+        text-align: center;
+        border: 1px solid white;
+        padding: 10px 20px;
+    }
+
+    .answer-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .answer-container .answerin{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0px;
+    }
+
+    .answer-container .answerin p{
+        color: white;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        border: 4px solid white;
+        padding: 10px 20px;
+    }
+
+
+</style>
+
+<body>
+    <div class="gamecontainer">
+        <div class="left">
+        <!-- questions and answers go here-->   
+            <div class="question-container">
+                    <div class="hr"></div>
+                    <p>What is my name?</p>
+                    <div class="hr"></div>
+            </div>
+
+            <div class="answer-container">
+                <div class="answerin">
+                    <div class="hr"></div>
+                    <p>
+                        <sapn>A.</sapn> Aman
+                    </p>>
+                    <div class="hr"></div>
+                    <p>
+                        <sapn>B.</sapn> Aman
+                    </p>>
+                    <div class="hr"></div>
+                </div>
+                <div class="answerin">
+                    <div class="hr"></div>
+                    <p>
+                        <sapn>C.</sapn> Aman
+                    </p>>
+                    <div class="hr"></div>
+                    <p>
+                        <sapn>D.</sapn> Aman
+                    </p>>
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="lifelines"></div>
+                <div class="lifelinein">
+                    <img src="./5050.png" alt="">
+                </div>
+                <div class="lifelinein">
+                    <img src="./AskTheAudience.png" alt="">
+                </div>
+                <div class="lifelinein">
+                    <img src="./PhoneAFriend.png" alt="">
+                </div>
+            <div class="hrl"></div>
+            <div class="progress">
+                <div class=""progressin1"> £ 1 Million </div>
+                <div class=""progressin"> £ 500,000 </div>
+                <div class=""progressin"> £ 250,000 </div>
+                <div class=""progressin1"> £ 125,000 </div>
+                <div class=""progressin"> £ 64,000 </div>
+                <div class=""progressin"> £ 32,000 </div>
+                <div class=""progressin1"> £ 16,000 </div>
+                <div class=""progressin"> £ 8,000 </div>
+                <div class=""progressin"> £ 2,000 </div>
+                <div class=""progressin1"> £ 1,000 </div>
+                <div class=""progressin active"> £ 0 </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
