@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Who Wants To Be a HTML Millionaire?</title>
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0c3b78;
+      color: white;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #question-container {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+    #result-container {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      z-index: 2;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0c3b78;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #164fa5;
+    }
+    #result-container {
+      margin-top: 20px;
+    }
+    #result {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    #result-container button {
+      padding: 8px 16px;
+    }
+  </style>
+<body>
+  <div id="question-container">
+    <h2 id="question">Question:</h2>
+    <ul id="answers">
+      <li><button onclick="checkAnswer(0)" id="answer0">Answer 1</button></li>
+      <li><button onclick="checkAnswer(1)" id="answer1">Answer 2</button></li>
+      <li><button onclick="checkAnswer(2)" id="answer2">Answer 3</button></li>
+      <li><button onclick="checkAnswer(3)" id="answer3">Answer 4</button></li>
+    </ul>
+  </div>
+
+  <div id="result-container" style="display: none;">
+    <p id="result"></p>
+    <button onclick="nextQuestion()">Next Question</button>
+  </div>
+
+  <script>
+    let questions = [
+      {
+        question: "What is the capital of France?",
+        answers: ["London", "Berlin", "Paris", "Madrid"],
+        correctAnswer: 2
+      },
+      {
+        question: "What is the largest planet in our solar system?",
+        answers: ["Mars", "Jupiter", "Saturn", "Earth"],
+        correctAnswer: 1
+      },
+      // Add more questions following the same structure
+    ];
+
+    let currentQuestion = null;
+    let answered = false;
+
+    function getRandomQuestion() {
+      return Math.floor(Math.random() * questions.length);
+    }
+
+    function shuffle(array) {
+      let currentIndex = array.length;
+      let temporaryValue, randomIndex;
+
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+
+    function displayQuestion() {
+      if (questions.length === 0) {
+        // All questions answered
+        document.getElementById("question").textContent = "You've answered all questions.";
+        document.getElementById("answers").style.display = "none";
+        return;
+        
+        const shuffledAnswers = shuffle([...questions[currentQuestion].answers]);
+      }
+
+      currentQuestion = getRandomQuestion();
+      answered = false;
+
+      const questionElement = document.getElementById("question");
+      const answersElement = document.getElementById("answers");
+      questionElement.textContent = questions[currentQuestion].question;
+
+      const shuffledAnswers = shuffle([...questions[currentQuestion].answers]);
+
+      for (let i = 0; i < 4; i++) {
+        const answerBtn = document.getElementById(`answer${i}`);
+        answerBtn.textContent = shuffledAnswers[i];
+        answerBtn.disabled = false;
+      }
+    }
+
+    function checkAnswer(selectedAnswer) {
+      if (answered) return;
+
+      const resultContainer = document.getElementById("result-container");
+      const result = document.getElementById("result");
+
+      answered = true;
+
+      for (let i = 0; i < 4; i++) {
+        const answerBtn = document.getElementById(`answer${i}`);
+        answerBtn.disabled = true;
+      }
+
+      if (selectedAnswer === questions[currentQuestion].correctAnswer) {
+        result.textContent = "Correct!";
+      } else {
+        result.textContent = "Wrong!";
+      }
+
+      resultContainer.style.display = "block";
+
+      // Remove the answered question from the array
+      questions.splice(currentQuestion, 1);
+    }
+
+    function nextQuestion() {
+      const resultContainer = document.getElementById("result-container");
+      resultContainer.style.display = "none";
+
+      displayQuestion();
+    }
+
+    displayQuestion();
+  </script>
+</body>
+</html>
+
