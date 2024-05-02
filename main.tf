@@ -3,12 +3,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "wwtbamrg" {
-    name = "wwtbam-rg"
+    name = "wwtbamrg"
     location = "West Europe"
 }
 
 resource "azurerm_storage_account" "wwtbamstr" {
-  name = "wwtbam-str"
+  name = "wwtbamstr"
   resource_group_name = azurerm_resource_group.wwtbamrg.name
   location = "UK West"
   account_tier = "Standard"
@@ -30,7 +30,7 @@ resource "azurerm_storage_blob" "wwtbamstrblob" {
     }
 
 resource "azurerm_static_web_app" "wwtbamweb" {
-    name = "wwtbam-web"
+    name = "wwtbamweb"
     location = azurerm_resource_group.wwtbamrg.location
     resource_group_name = azurerm_resource_group.wwtbamrg.name
     sku_tier = "Free"
