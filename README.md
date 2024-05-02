@@ -72,6 +72,8 @@ After cleaning up the workflows, I had to look in to the secrets section of the 
 
 Cleaning up the section allowed me to verify the resources that are being utilized.
 
+Although whenever the resource is destroyed and rebuilt, the deployment token needs to be updated in the section. To look in to
+
 
 <h2>Timelines for Completion</h2>
 
