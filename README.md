@@ -28,8 +28,54 @@ Backend
 
 ![Architecture Diagram](./million_pics/WWTBAM%20Diagram.drawio.png)
 
+<h3>GitHub Actions</h3>
+
+GitHub Actions similar to Azure DevOps allows to automate development using Continuous Integration and Continuous Deployment (CI/CD)
+- Enabling of automating build, testing and deployment pipeline.
+- Creating workflows to automatically build and test every pull request to the repository.
+
+## Reason to pick GitHub Actions over Azure DevOps 
+- Seamless integration
+	- With Azure, creating a workflow config file is a simple process that sets up in the repository itself.
+- Less experience in GitHub Actions
+	- As a user with constant experience in Azure DevOps, I have decided to use GitHub actions to try get out of my comfort zone and get familiarized with other technologies.
+
+## Issues and Resolutions
+
+With every new instances of technologies being used, there's always a learning curve. With the starting addition of the workflow configuration file in the WWTBAM repository, the workflow would *strangely* fail. I use strangely because even though it would fail the workflow config file, the static web app that has been deployed would update with changes that are made in the index.html file.
+
+Afterwards, when checking the Actions page out of GitHub, I realized there's also strangely two-three workflows set up that would run whenever there was any changes made to the GitHub repository. 
+
+
+Some of it would be unnecessary as from the picture above, I would be deploying a static web app, not a ASP.NET Core project. This prompted me to diagnose the workflows and disable the ones that are irrelevant to me. 
+
+However, the issue of the static web app workflow failing but still manging deploy the changes had me looking more closely to the actual workflow.  Specifically the Build and Deploy part of the workflow as that was the one giving the most issues.
+
+The issues were primarily relating to:
+- index.html file not being found
+- output_location causing errors
+- app_location causing errors
+
+This prompted me to research the correct path for the variables to allow for these changes:
+- app_location being changed from ==/index.html== to ==/==
+- output_location being changed from ==/== to ==./== 
+
+
+The reasons for these changes could be attributed to the deploy container was based in Ubuntu, which could be confusing the file folder structure. Allowing for these changes now makes the workflow run smoothly.
+
+[test change · aman-moh/Who-Wants-To-Be-A-Millionaire@9e7f564 (github.com)](https://github.com/aman-moh/Who-Wants-To-Be-A-Millionaire/actions/runs/8925216514/job/24513387520)
+
+
+## Action Secrets and Variables Clean-up
+
+After cleaning up the workflows, I had to look in to the secrets section of the GitHub Repository and see that there's plenty of secrets there from when previous attempts of deploying resources were made. 
+
+Cleaning up the section allowed me to verify the resources that are being utilized.
+
+
 <h2>Timelines for Completion</h2>
 
 <h2>Problems & Resolutions</h2>
 
 <h2>Conclusions</h2>
+
