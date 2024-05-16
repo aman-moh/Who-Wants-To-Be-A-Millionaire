@@ -1,4 +1,13 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+    }
+  }
+}
+
 provider "azurerm" {
+  skip_provider_registration = true
   features {}
 }
 
@@ -14,6 +23,7 @@ resource "azurerm_storage_account" "wwtbamstr" {
   account_tier              = "Standard"
   account_replication_type  = "LRS"
   enable_https_traffic_only = true
+  public_network_access_enabled = true
 
   static_website {
     index_document = "index.html"

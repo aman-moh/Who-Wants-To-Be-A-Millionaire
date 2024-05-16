@@ -53,7 +53,7 @@ However, the issue of the static web app workflow failing but still manging depl
 
 The issues were primarily relating to:
 - index.html file not being found
-- output_location causing errors
+- outputter_location causing errors
 - app_location causing errors
 
 This prompted me to research the correct path for the variables to allow for these changes:
