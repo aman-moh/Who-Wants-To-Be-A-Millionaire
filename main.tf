@@ -126,11 +126,12 @@ resource "azurerm_application_gateway" "appgw" {
   }
 
   backend_http_settings {
-    name                  = local.http_setting_name
-    cookie_based_affinity = "Disabled"
-    port                  = 443
-    protocol              = "Https"
-    request_timeout       = 60
+    name                                = local.http_setting_name
+    cookie_based_affinity               = "Disabled"
+    port                                = 443
+    protocol                            = "Https"
+    request_timeout                     = 60
+    pick_host_name_from_backend_address = true
   }
 
   http_listener {
@@ -178,7 +179,7 @@ resource "azurerm_private_endpoint" "wwtbamendpoint" {
 }
 
 resource "azurerm_private_dns_zone" "wwtbampdns" {
-  name                = "privatelink.azurewebsites.net"
+  name                = "privatelink.5.azurestaticapps.net"
   resource_group_name = azurerm_resource_group.wwtbamrg.name
 }
 
