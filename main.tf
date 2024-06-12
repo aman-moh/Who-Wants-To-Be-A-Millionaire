@@ -121,8 +121,8 @@ resource "azurerm_application_gateway" "appgw" {
 
 
   backend_address_pool {
-    name = local.backend_address_pool_name
-    fqdns = ["${azurerm_static_web_app.wwtbamweb3.name}.azurestaticapps.net"]
+    name  = local.backend_address_pool_name
+    fqdns = ["${azurerm_static_web_app.wwtbamweb3.default_host_name}"]
   }
 
   backend_http_settings {
@@ -187,5 +187,5 @@ resource "azurerm_private_dns_zone_virtual_network_link" "wwtbampdnslink" {
   resource_group_name   = azurerm_resource_group.wwtbamrg.name
   private_dns_zone_name = azurerm_private_dns_zone.wwtbampdns.name
   virtual_network_id    = azurerm_virtual_network.vnet.id
-  registration_enabled = false
+  registration_enabled  = false
 }
